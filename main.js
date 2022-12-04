@@ -28,12 +28,12 @@ document.addEventListener('keydown', event => {
 
         let p = moves[event.keyCode](board.piece);
 
-        //if (board.valid(p)) {
+        if (board.valid(p)) {
             board.piece.move(p)
 
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 
         board.piece.draw()
-        //}
+        }
     }
 })
