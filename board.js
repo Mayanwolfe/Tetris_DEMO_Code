@@ -79,6 +79,28 @@ class Board {
         }
     }
 
+    freeze() {
+        this.piece.shape.forEach((row,y) => {
+            row.forEach((value,x)  => {
+                if(value > 0) {
+                    this.grid[y + this.piece.y][x + this.piece.x] = value
+                }
+            })
+        }
+        )
+    }
+
+    drawBoard() {
+        this.grid.forEach((row,y) => {
+            row.forEach((value, x) => {
+                if(value > 0) {
+                    this.ctx.fillStyle = COLORS[value]
+                    this.ctx.fillRect(x,y,1,1)
+                }
+            })
+        })
+    }
+
     getEmptyGrid() {
         return Array.from(
             {length: ROWS}, () => Array(COLS).fill(0)
@@ -124,5 +146,18 @@ class Board {
           return p;
     }
 
+    getLinesClearedPoints(lines,level) {
+        const lineClearPoints = 
+            lines ===1
+                ? POINTS.SINGLE
+                : lines === 2
+                ? POINTS.DOUBLE
+                : lines === 3
+                ? POINTS.TRIPLE
+                : lines === 4
+                ? POINTS.TETRIS
+                : 0
 
+        return (account.level + 1) * lineClearPoints
+    }
 }
