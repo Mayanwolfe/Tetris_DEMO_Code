@@ -29,7 +29,9 @@ class Board {
 
     getNewPiece() {
         this.next = new Piece(this.ctxNext)
-        this.ctxNext.clearRect(0,0,this.ctxNext.canvas.with,this.ctxNext.canvas.height);
+        this.ctxNext.clearRect(0,0,
+            this.ctxNext.canvas.width,
+            this.ctxNext.canvas.height);
         this.next.draw()
     }
 
