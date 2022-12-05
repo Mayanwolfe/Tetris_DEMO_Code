@@ -10,7 +10,7 @@ let accountValues = {
 }
 
 function updateAccount(key,value) {
-    let element = getElementById(key)
+    let element = document.getElementById(key)
     if (element) {
         element.textContent = value
     }
@@ -79,7 +79,7 @@ function resetGame() {
     account.lines = 0
     account.level =0
     board.reset()
-    time = {start: 0, elapsed: 0, level: LEVEL[accounts.level]}
+    time = {start: 0, elapsed: 0, level: LEVEL[account.level]}
 }
 
 function play() {
@@ -92,7 +92,7 @@ function play() {
     animate()
 }
 
-function animate() {
+function animate(now = 0) {
     time.elapsed = now - time.start
     if (time.elapsed > time.level) {
         time.start = now

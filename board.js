@@ -60,7 +60,7 @@ class Board {
     clearLines () {
         let lines = 0
         this.grid.forEach((row,y) => {
-            if(row.evey(value => value >0)) {
+            if(row.every(value => value >0)) {
                 lines++
                 this.grid.splice(y,1)
                 this.grid.unshift(Array(COLS).fill(0))
